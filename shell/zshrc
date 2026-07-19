@@ -1,0 +1,113 @@
+# ~/.zshrc - 现代终端环境配置
+# 注意：密钥不要写在这里，改用 ~/.config/environment.d/opencode.conf
+# 该文件由 system session 自动加载，且不会随 dotfiles 仓库泄露
+
+# ----- 路径 -----
+export PATH="$HOME/.local/bin:$PATH"
+
+# ----- 历史记录 -----
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt SHARE_HISTORY          # 多终端共享历史
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS       # 连续重复忽略
+setopt HIST_IGNORE_ALL_DUPS   # 删除旧重复
+setopt HIST_IGNORE_SPACE      # 空格开头不记录（敏感命令前加空格）
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY            # 历史展开先确认
+
+# ----- 选项 -----
+setopt AUTO_CD                # 直接输入目录名 cd
+setopt AUTO_PUSHD             # cd 自动推栈
+setopt PUSHD_IGNORE_DUPS
+setopt INTERACTIVE_COMMENTS   # 交互式允许注释
+setopt EXTENDED_GLOB
+setopt NO_BEEP
+
+# ----- 补全 -----
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 大小写不敏感
+zstyle ':completion:*' rehash true
+
+# ----- 现代工具集成 -----
+# fzf
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+  export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --info=inline"
+  # rg 提供 fzf 的搜索内容
+  if command -v rg >/dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:300 {}'"
+  fi
+fi
+
+# zoxide（更聪明的 cd）
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+# starship 提示符
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+# eza 替代 ls
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --git --icons --group-directories-first'
+  alias ll='eza -lh --git --icons --group-directories-first'
+  alias la='eza -lah --git --icons --group-directories-first'
+  alias lt='eza --tree --level=2 --git --icons'
+else
+  alias ls='ls --color=auto'
+  alias ll='ls -lh'
+  alias la='ls -lah'
+fi
+
+# bat 替代 cat
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat --paging=never'
+  export BAT_THEME="Catppuccin-mocha"
+fi
+
+# rg 别名
+if command -v rg >/dev/null 2>&1; then
+  alias grep='rg'
+fi
+
+# fd 别名
+if command -v fd >/dev/null 2>&1; then
+  alias find='fd'
+fi
+
+# btop
+alias top='btop'
+
+# git-delta
+if command -v delta >/dev/null 2>&1; then
+  export GIT_PAGER='delta'
+fi
+
+# ----- 常用别名 -----
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+
+alias gs='git status'
+alias gl='git log --oneline --graph --decorate -20'
+alias gd='git diff'
+alias gp='git push'
+alias gpl='git pull'
+
+alias :q='exit'
+alias zj='zellij'  # 若装了 zellij
+
+# 兼容旧 OPENCODE_API_KEY（建议改用 environment.d，见仓库 README）
+[ -f ~/.config/environment.d/opencode.conf ] && \
+  source ~/.config/environment.d/opencode.conf 2>/dev/null
