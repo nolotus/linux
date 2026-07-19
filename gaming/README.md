@@ -21,22 +21,11 @@
 | mangohud | 游戏内显示 FPS/CPU/GPU/温度叠加层 |
 | gamescope | Valve 微合成器，可强制分辨率/HDR |
 
-## GPU 性能模式切换
+## GPU 性能
 
-`gpu-profile.sh` 切换日常/游戏模式：
+7900 XT 默认功耗上限 265W 已是 PP 表最大值，**无需任何手动操作**——AMD 开源驱动默认满血，游戏时自动升频到 2075MHz SCLK / 1249MHz MCLK。
 
-```bash
-# 游戏：拉满功耗上限，自动升频最高
-sudo gpu-profile.sh performance
-
-# 日常：回到 auto
-sudo gpu-profile.sh auto
-
-# 查看状态
-sudo gpu-profile.sh status
-```
-
-7900 XT 默认功耗上限 265W 已是 PP 表最大值。`performance` 模式下 GPU 会自动跑满 2075MHz SCLK / 1249MHz MCLK。
+如想确认频率跑满，用 mangohud 看叠加层即可。
 
 ## Steam / Proton 配置
 
@@ -93,5 +82,4 @@ sudo dnf install -y mesa-dri-drivers.i686 mesa-vulkan-drivers.i686
 
 ```bash
 sudo dnf remove -y vulkan-tools mangohud gamescope
-sudo gpu-profile.sh auto   # 恢复默认
 ```
