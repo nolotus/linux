@@ -1,0 +1,9 @@
+patch:
+  translator/spelling_hints: 0
+  translator/always_show_comments: false
+  translator/comment_format: []
+  grammar:
+    language: zh-hans-t-essay-bgw
+  translator/contextual_suggestions: true
+  translator/max_homophones: 7
+  translator/max_homographs: 7
