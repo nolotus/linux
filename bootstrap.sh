@@ -7,8 +7,8 @@
 #   cd ~/linux && bash bootstrap.sh
 #
 # 该脚本依次执行各模块的 install.sh，顺序敏感：
-#   system  -> shell -> fonts -> ibus-rime
-#   (先配镜像/DNS/工具链，再配字体，最后输入法)
+#   system  -> shell -> fonts -> ibus-rime -> gaming
+#   (先配镜像/DNS/工具链，再配字体，输入法，最后游戏)
 
 set -euo pipefail
 
@@ -22,30 +22,34 @@ warn() { echo -e "${YELLOW}!! $1${NC}"; }
 err() { echo -e "${RED}!! $1${NC}"; }
 
 # 0. 前置检查
-log "0/5 前置检查"
+log "0/6 前置检查"
 [ "$(awk -F= '/^NAME/{print $2}' /etc/os-release | tr -d '"')" = "Fedora Linux" ] || { err "非 Fedora 系统，脚本中止"; exit 1; }
 command -v dnf >/dev/null || { err "无 dnf，中止"; exit 1; }
 [ "$(id -u)" = 0 ] && { err "请不要用 root 运行，脚本会用 sudo/pkexec 提权"; exit 1; }
 log "当前用户：$USER，系统：$(rpm -E %{fedora})"
 
 # 1. 系统级优化（DNF 镜像 + DNS + VA-API + tuned）
-log "1/5 系统级优化"
+log "1/6 系统级优化"
 [ -f system/install.sh ] && bash system/install.sh || warn "system/install.sh 不存在，跳过"
 
 # 2. Shell 与现代工具链
-log "2/5 Shell 与现代工具链"
+log "2/6 Shell 与现代工具链"
 [ -f shell/install.sh ] && bash shell/install.sh || warn "shell/install.sh 不存在，跳过"
 
 # 3. 字体
-log "3/5 字体配置"
+log "3/6 字体配置"
 [ -f fonts/install.sh ] && bash fonts/install.sh || warn "fonts/install.sh 不存在，跳过"
 
 # 4. 输入法
-log "4/5 输入法（IBus + Rime + 雾凇拼音）"
+log "4/6 输入法（IBus + Rime + 雾凇拼音）"
 [ -f ibus-rime/install.sh ] && bash ibus-rime/install.sh || warn "ibus-rime/install.sh 不存在，跳过"
 
-# 5. 总结
-log "5/5 完成"
+# 5. 游戏优化
+log "5/6 游戏优化（AMD GPU + Vulkan 工具）"
+[ -f gaming/install.sh ] && bash gaming/install.sh || warn "gaming/install.sh 不存在，跳过"
+
+# 6. 总结
+log "6/6 完成"
 echo
 echo "─────────────────────────────"
 echo " 全部模块应用完成"

@@ -10,6 +10,7 @@ Fedora 44 (GNOME) 的系统优化与配置备份。重装系统后跑一次 `boo
 | [`shell/`](shell/) | Shell 与终端 | zsh + starship + fzf/rg/fd/eza/bat/zoxide/git-delta/btop + git 全局配置 |
 | [`fonts/`](fonts/) | 字体配置 | Noto CJK SC 中文 + JetBrainsMono Nerd Font 终端，fontconfig 映射 Windows 字体名 |
 | [`ibus-rime/`](ibus-rime/) | 输入法 | IBus + Rime + 雾凇拼音（现代词库）+ 八股文语法模型（长句准确） |
+| [`gaming/`](gaming/) | 游戏优化 | AMD 开源 Mesa 驱动 + Vulkan + gamemode + mangohud + gamescope + GPU 性能模式切换 |
 
 ## 一键恢复（重装系统后）
 
@@ -22,8 +23,8 @@ cd ~/linux
 bash bootstrap.sh
 ```
 
-`bootstrap.sh` 按顺序执行各模块的 `install.sh`：system → shell → fonts → ibus-rime。
-顺序敏感（先配镜像加速后面下载，再装工具链，再字体，最后输入法）。
+`bootstrap.sh` 按顺序执行各模块的 `install.sh`：system → shell → fonts → ibus-rime → gaming。
+顺序敏感（先配镜像加速后面下载，再装工具链，再字体，输入法，最后游戏）。
 
 完成后**注销重新登录**让 zsh/starship/fontconfig 生效。
 
@@ -69,7 +70,6 @@ linux/
     │   └── wanxiang-config.yaml  # 万象模型替代配置
     └── README.md
 ```
-
 ## 安全说明
 
 - **密钥不入库**：`OPENCODE_API_KEY` 等敏感信息放 `~/.config/environment.d/*.conf`（chmod 600），由 systemd 自动加载。
