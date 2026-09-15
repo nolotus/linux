@@ -1,0 +1,3 @@
+[/]
+xkb-options=['ctrl:swap_lwin_lctl']
+sources=[('xkb', 'us'), ('ibus', 'rime')]

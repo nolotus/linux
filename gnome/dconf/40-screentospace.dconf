@@ -1,0 +1,5 @@
+[/]
+move-window-when-maximized=false
+trigger-on-fullscreen=true
+trigger-on-maximize=false
+triggers-migrated=true

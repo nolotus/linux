@@ -1,0 +1,52 @@
+{
+  "Big Sur Mountains": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/bd/33/bd337ce9acd80cd36a8cd68e27acff49c2e535a49a764424fe1b8eb9b1e76815?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=b0f08b3b4576fce6e6bb77afe3ad443ee10cf5ba87e453c2b42bafd5e5fe3444&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 13560081,
+    "oid": "bd337ce9acd80cd36a8cd68e27acff49c2e535a49a764424fe1b8eb9b1e76815"
+  },
+  "Big Sur Night Grass": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/54/8f/548f06fa1ed00891a3b7ffe9eb6bf189920b382379e43f0bd1abc699f27f5114?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=4296ac765397871138fc69b7a34e8555151f93410bd688b5c0444aefc037d403&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 17055682,
+    "oid": "548f06fa1ed00891a3b7ffe9eb6bf189920b382379e43f0bd1abc699f27f5114"
+  },
+  "Big Sur Succulents": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/78/5f/785f8c8e8335336928a572d6a21803047ead97629bbfbf0c08c0c1019cfeda35?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=3862a3c4c258a140635930e78084e12b511dc0d0d8d855fb5ce4772b03d1346e&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 9792846,
+    "oid": "785f8c8e8335336928a572d6a21803047ead97629bbfbf0c08c0c1019cfeda35"
+  },
+  "The Desert": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/c3/b5/c3b55f72c57d78f85fc7d8e42528d16847359123d9e5bee434150ff4900e4dbc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=443e6c245853ce5825a4e6bccb02e6cc6eb6473107f3a348418b0ab6a6f97050&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 74285625,
+    "oid": "c3b55f72c57d78f85fc7d8e42528d16847359123d9e5bee434150ff4900e4dbc"
+  },
+  "The Lake": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/06/a7/06a7a5653019d7cf6511f769803126891b9bf4ddaff3f4b5c14fcf28e7f96633?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=cdf76a7c044029da31e94751ec4a77b68841add95493ada1990dbad49b0aef36&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 81427359,
+    "oid": "06a7a5653019d7cf6511f769803126891b9bf4ddaff3f4b5c14fcf28e7f96633"
+  },
+  "Tree": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/c6/72/c672543c367ff48c6a6d29878e25c902a007db89c35b4886a65b76d55ae0f4cf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=49a13c907005908c4238d113de6774144ce83fb2b851cf3adc4f35d2f1b4dedb&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 29985989,
+    "oid": "c672543c367ff48c6a6d29878e25c902a007db89c35b4886a65b76d55ae0f4cf"
+  },
+  "Valley": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/6a/40/6a40b7f052bc638ddfbb9b3bdb1e8b47ce291188d2d18b3da1b1d69d13d5c594?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=39bc98e33da6f1597e89dcfbe426045e117f8e1eea5b1e4230100d2edfa19ca5&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 33063576,
+    "oid": "6a40b7f052bc638ddfbb9b3bdb1e8b47ce291188d2d18b3da1b1d69d13d5c594"
+  },
+  "The Cliffs": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/14/e9/14e98e314cbc91aae9e1540b37cb9e1627e248c52a1ffb6afcbd269a476d1565?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=9af9ba76419de86fa9c34aaddffc3b96c3b097ee7fc18020fa80636ddc1da9d2&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 78365495,
+    "oid": "14e98e314cbc91aae9e1540b37cb9e1627e248c52a1ffb6afcbd269a476d1565"
+  },
+  "Sonoma": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/49/ab/49abdac0cdd3aaebdc98f1e1be9b837bb625c22d9b35f5bafe48e12c8f4a64f2?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=b94f8e93caef6b3c414c1a2e63f8d4e25ae977c55391f895d8736bea9ae0bb4b&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 20362274,
+    "oid": "49abdac0cdd3aaebdc98f1e1be9b837bb625c22d9b35f5bafe48e12c8f4a64f2"
+  },
+  "Solar Gradients": {
+    "url": "https://github-cloud.githubusercontent.com/alambic/media/780457711/5c/6b/5c6b1fbf526478030d8c8ca929f288c232b75610a62d97aacd15d98978a2acf8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5BA2674WPWWEFGQ5%2F20260719%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260719T100528Z&X-Amz-Expires=3600&X-Amz-Signature=aff99de3185323ac8cf3c63f00d67c494ca9778f7b715c11b0622dab7053314e&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=868122971&token=1",
+    "size": 80850306,
+    "oid": "5c6b1fbf526478030d8c8ca929f288c232b75610a62d97aacd15d98978a2acf8"
+  }
+}

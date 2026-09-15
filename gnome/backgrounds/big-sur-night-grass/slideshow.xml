@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<background>
+  <starttime><year>2026</year><month>1</month><day>1</day><hour>0</hour><minute>0</minute><second>0</second></starttime>
+  <static>
+    <duration>85500.0</duration>
+    <file>/home/nolotus/.local/share/backgrounds/mac/big-sur-night-grass/frame_00.jpg</file>
+  </static>
+  <transition>
+    <duration>900.0</duration>
+    <from>/home/nolotus/.local/share/backgrounds/mac/big-sur-night-grass/frame_00.jpg</from>
+    <to>/home/nolotus/.local/share/backgrounds/mac/big-sur-night-grass/frame_00.jpg</to>
+  </transition>
+</background>
