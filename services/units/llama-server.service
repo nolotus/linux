@@ -1,0 +1,20 @@
+[Unit]
+Description=Qwen3.8-27B ROCm 7.2.1 MTP llama-server (OpenAI API)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/nolotus/start-qwen-api.sh foreground
+ExecStopPost=/usr/bin/rm -f /home/nolotus/llama-server.pid
+Restart=on-failure
+RestartSec=15
+Nice=10
+Environment=LD_LIBRARY_PATH=/home/nolotus/llama-bin/llama-dflash2:/home/nolotus/llama-bin/llama-b8407-ubuntu-24.04-rocm-7.2.1-gfx110X-gfx115X-gfx120X-x64
+Environment=HIP_VISIBLE_DEVICES=0
+Environment=MODEL=/home/nolotus/models/Huihui-Qwen3.8-27B-abliterated-UD-Q3_K_XL.gguf
+Environment=CTX_SIZE=131072
+Environment=REASONING_BUDGET=128
+Environment=SPEC_TYPE=dflash
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Clash Verge Profile Auto-Reload
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/share/io.github.clash-verge-rev.clash-verge-rev/reload-profile.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

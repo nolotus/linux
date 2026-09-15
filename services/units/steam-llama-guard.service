@@ -1,0 +1,11 @@
+[Unit]
+Description=Stop llama-server while Steam is running
+
+[Service]
+Type=simple
+ExecStart=/home/nolotus/.local/bin/steam-llama-guard
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

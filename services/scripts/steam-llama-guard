@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -u
+
+# Keep Steam/GPU games from sharing VRAM with the local LLM server.
+while true; do
+  if pgrep -u "$USER" -x steam >/dev/null 2>&1 \
+    || pgrep -u "$USER" -x steamwebhelper >/dev/null 2>&1 \
+    || pgrep -u "$USER" -x SlayTheSpire >/dev/null 2>&1; then
+    if /usr/bin/systemctl --user is-active --quiet llama-server.service; then
+      echo "Steam detected; stopping llama-server.service"
+      /usr/bin/systemctl --user stop llama-server.service >/dev/null 2>&1 || true
+    fi
+  fi
+
+  sleep 5
+done
