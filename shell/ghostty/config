@@ -1,0 +1,31 @@
+# Ghostty 配置
+# 日夜主题：跟随系统外观自动切换（GNOME 深色模式联动）
+# 日夜都用 GitHub 官方配色，跟随系统外观自动切换
+theme = light:GitHub Light Default,dark:GitHub Dark Dimmed
+
+# 窗口装饰跟随系统主题
+window-theme = auto
+
+# 常用备选主题对（换主题时改上面一行即可，名字以 ghostty +list-themes 为准）：
+# theme = light:Gruvbox Light,dark:Gruvbox Dark
+# theme = light:iTerm2 Solarized Light,dark:iTerm2 Solarized Dark
+# 查看全部内置主题：ghostty +list-themes
+
+# BEGIN NOLO MAX-COMPAT CLIPBOARD
+# Linux has both Primary Selection and the cross-application system clipboard.
+# Mouse selection updates only Primary Selection, so merely selecting terminal
+# output cannot overwrite text explicitly copied from a browser. Use Ctrl+C or
+# Ctrl+Shift+C after selecting when copying to another application.
+copy-on-select = true
+
+# Terminal-compatible copy: copy when a selection exists; otherwise pass Ctrl+C
+# through to the running TUI/shell as SIGINT.
+keybind = performable:ctrl+c=copy_to_clipboard:mixed
+
+# Cross-application paste aliases. Ghostty's default Ctrl+Shift+C/V and
+# Ctrl+Insert remain available because these entries do not clear defaults.
+keybind = ctrl+v=paste_from_clipboard
+keybind = shift+insert=paste_from_clipboard
+keybind = super+c=copy_to_clipboard:mixed
+keybind = super+v=paste_from_clipboard
+# END NOLO MAX-COMPAT CLIPBOARD

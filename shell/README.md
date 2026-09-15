@@ -17,6 +17,7 @@
 | zoxide (z) | cd | 基于频率的智能跳转 |
 | git-delta | git diff | 美化 diff/blkame 输出 |
 | btop | top/htop | 现代系统监控 |
+| ghostty | GNOME Terminal | GPU 加速终端（配置/主题随仓库部署，含剪贴板兼容设置） |
 
 ## 一键安装
 
@@ -24,7 +25,7 @@
 bash install.sh
 ```
 
-脚本会：安装 dnf 包 → 下载 starship → 写入 zshrc/starship.toml → 切换默认 shell 到 zsh。
+脚本会：安装 dnf 包 → 下载 starship → 写入 zshrc/starship.toml → 部署 Ghostty 配置 → 切换默认 shell 到 zsh。
 
 ## 手动步骤
 
@@ -57,6 +58,17 @@ chsh -s /usr/bin/zsh
 ```
 
 重新登录后生效。
+
+### 5. 部署 Ghostty 终端配置
+
+```bash
+cp -rf ghostty/config ~/.config/ghostty/config
+cp -rf ghostty/themes ~/.config/ghostty/themes
+```
+
+- 主题跟随 GNOME 日夜模式（`light:GitHub Light Default,dark:GitHub Dark Dimmed`）
+- 剪贴板兼容层：`copy-on-select`；Ctrl+C（有选区复制、无选区透传 SIGINT）；`Super+C/V` 跨应用复制粘贴别名（详见 `ghostty/config` 内注释）
+- 未安装 ghostty 时：`sudo dnf copr enable agriffis/ghostty-nightly && sudo dnf install -y ghostty`
 
 ## 常用快捷键
 
@@ -103,4 +115,5 @@ systemd 用户会话会自动加载到所有进程的环境变量，zshrc 末尾
 chsh -s /bin/bash
 sudo dnf remove -y zsh fzf ripgrep fd-find zoxide eza btop git-delta
 rm ~/.local/bin/starship ~/.zshrc ~/.config/starship.toml
+rm -rf ~/.config/ghostty
 ```

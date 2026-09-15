@@ -111,3 +111,26 @@ alias zj='zellij'  # 若装了 zellij
 # 兼容旧 OPENCODE_API_KEY（建议改用 environment.d，见仓库 README）
 [ -f ~/.config/environment.d/opencode.conf ] && \
   source ~/.config/environment.d/opencode.conf 2>/dev/null
+
+# kimi-code
+export PATH="/home/nolotus/.kimi-code/bin:$PATH"
+
+# Nolo TUI 主题：保持默认 terminal 自适应模式（跟随各终端背景与日夜）。
+# 注意：NOLO_TUI_THEME 合法值只有 light/dark/terminal/auto；"linear" 无效且会被静默忽略，已移除。
+
+# ----- 代理（Clash Verge Rev, mixed-port 7897）-----
+# 终端里的 AI CLI / 包管理器读的是环境变量，不会自动走 GNOME 系统代理。
+# 实测：不加这段时 api.openai.com / api.x.ai / generativelanguage.googleapis.com 直连全部失败。
+export HTTP_PROXY="http://127.0.0.1:7897"
+export HTTPS_PROXY="http://127.0.0.1:7897"
+export ALL_PROXY="socks5://127.0.0.1:7897"
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+# 本地 / 内网 / Nolo 服务直连，不进代理
+export NO_PROXY="localhost,127.0.0.1,::1,0.0.0.0,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,nolo.chat,.nolo.chat,local.airhost.co,nolotus.local"
+export no_proxy="$NO_PROXY"
+
+
+# bun completions
+[ -s "/home/nolotus/.bun/_bun" ] && source "/home/nolotus/.bun/_bun"
