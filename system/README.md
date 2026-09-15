@@ -11,6 +11,7 @@
 | DNS | 路由器 192.168.31.1 | 阿里 223.5.5.5 + 腾讯 119.29.29.29 |
 | VA-API 硬件解码 | 未启用 | mesa Gallium + AV1/H.264/H.265/VP9 全格式 |
 | tuned profile | throughput-performance | desktop（更平衡） |
+| environment.d | 无 | Mesa DRI3 修复 + Firefox 强制 Wayland + 代理变量（systemd/GUI 继承） |
 | 不必要服务 | ModemManager/avahi/sssd-kcm 运行 | 禁用 |
 
 ## 一键应用
@@ -18,6 +19,18 @@
 ```bash
 bash install.sh
 ```
+
+## environment.d 环境变量
+
+`environment.d/` 三个文件部署到 `~/.config/environment.d/`（systemd 用户会话启动时加载，GUI 应用与 systemd 用户服务都会继承）：
+
+| 文件 | 内容 | 作用 |
+|---|---|---|
+| `mesa-fix.conf` | `LIBGL_DRI3_DISABLE=1`、`radeonsi_enable_nir=1` | AMD 卡渲染修复 |
+| `firefox-wayland.conf` | `MOZ_ENABLE_WAYLAND=1` | 强制 Firefox Wayland 原生（XWayland 下 IBus 候选窗错位） |
+| `proxy.conf` | Clash mixed-port 代理变量 | 终端/GUI/systemd 用户服务走代理（含内网直连白名单） |
+
+⚠️ 含 API key 的 `opencode.conf` 等敏感项不在此模块（密钥不入库）。
 
 ## DNS 配置说明
 
@@ -97,4 +110,6 @@ sudo rm /etc/systemd/resolved.conf.d/dns.conf
 nmcli connection modify "有线连接 1" ipv4.ignore-auto-dns no ipv6.ignore-auto-dns no ipv4.dns "" ipv6.dns ""
 # 恢复 profile
 sudo tuned-adm profile throughput-performance
+# 移除 environment.d
+rm ~/.config/environment.d/{mesa-fix,firefox-wayland,proxy}.conf
 ```
