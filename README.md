@@ -8,10 +8,10 @@ Fedora 44 (GNOME) 的系统优化与配置备份。重装系统后跑一次 `boo
 |---|---|---|
 | [`system/`](system/) | 系统级优化 | DNF 清华镜像、阿里 DNS、VA-API 硬件解码、tuned desktop、environment.d 环境变量、禁用冗余服务 |
 | [`shell/`](shell/) | Shell 与终端 | zsh + starship + fzf/rg/fd/eza/bat/zoxide/git-delta/btop + git 全局配置 + Ghostty 终端配置 |
-| [`fonts/`](fonts/) | 字体配置 | MiSans 中文主字体（Noto 兜底生僻字）+ JetBrainsMono Nerd Font + fontconfig 映射 Windows 字体名 |
+| [`fonts/`](fonts/) | 字体配置 | Inter 西文主字体 + MiSans 中文主字体（Noto 兜底生僻字）+ JetBrainsMono Nerd Font + subpixel 抗锯齿 + fontconfig 映射 Windows 字体名 |
 | [`ibus-rime/`](ibus-rime/) | 输入法 | IBus + Rime + 雾凇拼音（现代词库）+ 八股文语法模型（长句准确） |
 | [`gaming/`](gaming/) | 游戏优化 | AMD 开源 Mesa 驱动 + Vulkan + gamemode + mangohud + gamescope |
-| [`gnome/`](gnome/) | 桌面（macOS 风格） | 键位交换 Ctrl⇄Win、全屏=独立空间、Dash to Dock、HideTopBar、mac 壁纸工具链 |
+| [`gnome/`](gnome/) | 桌面（macOS 风格） | 键位交换 Ctrl⇄Win、全屏=独立空间、Dash to Dock、HideTopBar、界面字体 Inter Medium 11.5 + subpixel 抗锯齿、mac 壁纸工具链 |
 | [`input-remapper/`](input-remapper/) | 鼠标侧键 | Rapoo 侧键 → 切换工作区（设备隔离，不影响键盘） |
 | [`services/`](services/) | 用户级 systemd 服务 | llama-server、steam-llama-guard、ptyxis-theme-sync、clash-profile-reload |
 
@@ -62,7 +62,7 @@ linux/
 │   └── README.md
 ├── fonts/
 │   ├── install.sh
-│   ├── fonts.conf            # MiSans + Adwaita Sans + Noto 兜底
+│   ├── fonts.conf            # Inter 西文 + MiSans 中文 + Noto 兜底 + subpixel 渲染
 │   └── README.md
 ├── ibus-rime/
 │   ├── install.sh
