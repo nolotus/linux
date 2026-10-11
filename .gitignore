@@ -1,0 +1,3 @@
+# Python 字节码（memory/probes/ 演练脚本编译产物）
+__pycache__/
+*.pyc

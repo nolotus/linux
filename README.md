@@ -14,6 +14,7 @@ Fedora 44 (GNOME) 的系统优化与配置备份。重装系统后跑一次 `boo
 | [`gnome/`](gnome/) | 桌面（macOS 风格） | 键位交换 Ctrl⇄Win、全屏=独立空间、Dash to Dock、HideTopBar、界面字体 Inter Medium 11.5 + subpixel 抗锯齿、mac 壁纸工具链 |
 | [`input-remapper/`](input-remapper/) | 鼠标侧键 | Rapoo 侧键 → 切换工作区（设备隔离，不影响键盘） |
 | [`services/`](services/) | 用户级 systemd 服务 | llama-server、steam-llama-guard、ptyxis-theme-sync、clash-profile-reload |
+| [`memory/`](memory/) | 内存策略（16GB 机器） | zram min(ram/2,8G)/zstd、oomd swap 兜底、Firefox/测试 cgroup 硬上限、桌面 OOM 不连坐 |
 
 ## 一键恢复（重装系统后）
 
