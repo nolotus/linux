@@ -34,7 +34,7 @@ BTRFS warning (device nvme0n1p4): swapfile must be on one device
 
 ## 取值理由
 
-- **zram `min(ram / 2, 8192)` + zstd**：4 GiB 太紧；12 GiB 已实测「装满时吃掉约 10.4 GB 物理内存、压缩比只有 1.15（高熵数据压不动）」。折中取 `ram/2`（本机 MemTotal 15.53 GiB → `ram/2 ≈ 7.75 GiB` 是绑定项，实测 `disksize = 7.76 GiB`），8192 只是上限
+- **zram `min(ram / 2, 8192)` + zstd**：4 GiB 太紧；12 GiB 已实测「装满时吃掉约 10.4 GB 物理内存、压缩比只有 1.15（高熵数据压不动）」。折中取 `ram/2`（本机 MemTotal 15.53 GiB → `ram/2 ≈ 7.76 GiB` 是绑定项，实测 `disksize = 7.76 GiB`），8192 只是上限
 - **`vm.swappiness=180`、`vm.page-cluster=0`**：zram 是随机访问设备，这是 zram 场景的推荐值（`swappiness=10` 是给磁盘 swap 的，对本机反而有害）
 - **`watermark_scale_factor=125`、`watermark_boost_factor=0`**：Fedora zram 场景推荐，让回收更早动手
 - **三处 `MemoryHigh` 一律设 `infinity`**：限流产生的 stall 会累加进 PSI，反而触发 oomd 误杀（实测 62 MB 的 Clash Verge 被误杀过）
@@ -101,4 +101,4 @@ sudo systemctl daemon-reload && systemctl --user daemon-reload
 
 ## 相关但不属于本模块
 
-排查中同时发现：测试运行器反复执行 `systemd-run ... /usr/bin/true`，而 `/usr/bin/true` 在 systemd 把它搬进 cgroup 之前就退出，累积 `Failed with result 'resources'` 的失败单元，最终把用户管理器的作业队列堵死（`systemd-run` 客户端永久挂起，连 `/bin/echo hi` 都起不来）。这是**项目代码的竞态**（bun-nolo 仓库），与内存策略无关，需要另行修复；修法：探针改成 `systemd-run --user --scope true` 或加 `--wait` 跑 `sleep 0.2`。
+排查中同时发现：测试运行器反复执行 `systemd-run ... /usr/bin/true`，而 `/usr/bin/true` 在 systemd 把它搬进 cgroup 之前就退出，累积 `Failed with result 'resources'` 的失败单元，最终把用户管理器的作业队列堵死（`systemd-run` 客户端永久挂起，连 `/bin/echo hi` 都起不来）。这是**项目代码的竞态**（bun-nolo 仓库），与内存策略无关，**已于 2026-10-11 修复并合入本地 alpha（`0defae636`，merge `0444fd5c9`）**：探测改为自证式载荷（等自己真的被搬进 `run-p<载荷PID>-i<inode>.scope` 才退出，有界 10 秒 + `--collect`），失败时打印可见提示。
