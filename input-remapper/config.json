@@ -1,6 +1,6 @@
 {
     "autoload": {
-        "Rapoo Rapoo Gaming Device": "mac-workspaces"
+        "Rapoo Rapoo Gaming Device": "WorkspaceSwitch"
     },
     "version": "2.2.1"
 }

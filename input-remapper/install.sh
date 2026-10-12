@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# input-remapper 鼠标侧键映射一键安装（Rapoo 侧键 → Super+Alt+←/→ 切工作区）
+# input-remapper 鼠标侧键映射一键安装（Rapoo 侧键 → Ctrl+Alt+←/→ 切工作区）
 # 适用：Fedora 44 (GNOME)
 set -euo pipefail
 
@@ -15,8 +15,8 @@ sudo systemctl enable --now input-remapper
 echo "==> 3/5 部署配置（preset + autoload + 登录自启）"
 mkdir -p "$PRESET_DIR/presets/Rapoo Rapoo Gaming Device" ~/.config/autostart
 cp -f "$SCRIPT_DIR/config.json" "$PRESET_DIR/config.json"
-cp -f "$SCRIPT_DIR/presets/Rapoo Rapoo Gaming Device/mac-workspaces.json" \
-  "$PRESET_DIR/presets/Rapoo Rapoo Gaming Device/mac-workspaces.json"
+cp -f "$SCRIPT_DIR/presets/Rapoo Rapoo Gaming Device/WorkspaceSwitch.json" \
+  "$PRESET_DIR/presets/Rapoo Rapoo Gaming Device/WorkspaceSwitch.json"
 cp -f "$SCRIPT_DIR/autostart/input-remapper-autoload.desktop" ~/.config/autostart/
 
 echo "==> 4/5 将用户加入 input 组（CLI 枚举设备所需）"
