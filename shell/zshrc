@@ -134,3 +134,10 @@ export no_proxy="$NO_PROXY"
 
 # bun completions
 [ -s "/home/nolotus/.bun/_bun" ] && source "/home/nolotus/.bun/_bun"
+
+# ----- zsh 插件（Fedora 官方包装了但不自动 source，见 install.sh）-----
+[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# 语法高亮须最后加载（在 compinit 之后）
+[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

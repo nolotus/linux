@@ -6,7 +6,7 @@ Fedora 44 (GNOME) 的系统优化与配置备份。重装系统后跑一次 `boo
 
 | 模块 | 说明 | 关键内容 |
 |---|---|---|
-| [`system/`](system/) | 系统级优化 | DNF 清华镜像、阿里 DNS、VA-API 硬件解码、tuned desktop、environment.d 环境变量、禁用冗余服务 |
+| [`system/`](system/) | 系统级优化 | DNF 阿里镜像、阿里 DNS、RPM Fusion 源、VA-API 硬件解码（freeworld 提供 H.264/H.265）、Firefox VA-API user.js、排障工具（iperf3/strace/ncdu/duf/yt-dlp）、tuned desktop、environment.d 环境变量、禁用冗余服务 |
 | [`shell/`](shell/) | Shell 与终端 | zsh + starship + fzf/rg/fd/eza/bat/zoxide/git-delta/btop + git 全局配置 + Ghostty 终端配置 |
 | [`fonts/`](fonts/) | 字体配置 | Inter 西文主字体 + MiSans 中文主字体（Noto 兜底生僻字）+ JetBrainsMono Nerd Font + subpixel 抗锯齿 + fontconfig 映射 Windows 字体名 |
 | [`ibus-rime/`](ibus-rime/) | 输入法 | IBus + Rime + 雾凇拼音（现代词库）+ 八股文语法模型（长句准确） |
@@ -15,6 +15,7 @@ Fedora 44 (GNOME) 的系统优化与配置备份。重装系统后跑一次 `boo
 | [`input-remapper/`](input-remapper/) | 鼠标侧键 | Rapoo 侧键 → 切换工作区（设备隔离，不影响键盘） |
 | [`services/`](services/) | 用户级 systemd 服务 | llama-server、steam-llama-guard、ptyxis-theme-sync、clash-profile-reload |
 | [`memory/`](memory/) | 内存策略（16GB 机器） | zram min(ram/2,8G)/zstd、oomd swap 兜底、Firefox/测试 cgroup 硬上限、桌面 OOM 不连坐 |
+| [`wifi/`](wifi/) | WiFi 链路优化与诊断 | 信道选择记录（157）、AX200 参数基线、一键诊断脚本 `wifi-diag`、大文件内网传输建议 |
 
 ## 一键恢复（重装系统后）
 
@@ -27,8 +28,8 @@ cd ~/linux
 bash bootstrap.sh
 ```
 
-`bootstrap.sh` 按顺序执行各模块的 `install.sh`：system → shell → fonts → ibus-rime → gaming → gnome → input-remapper → services。
-顺序敏感（先配镜像加速后面下载，再工具链、字体、输入法、游戏，最后桌面 / 鼠标 / 服务）。
+`bootstrap.sh` 按顺序执行各模块的 `install.sh`：system → shell → fonts → ibus-rime → gaming → gnome → input-remapper → services → memory → wifi。
+顺序敏感（先配镜像加速后面下载，再工具链、字体、输入法、游戏，最后桌面 / 鼠标 / 服务 / 内存 / WiFi 诊断）。
 
 完成后**注销重新登录**让 zsh/starship/fontconfig/扩展/键位/鼠标侧键生效。
 
@@ -43,6 +44,8 @@ bash ibus-rime/install.sh       # 输入法
 bash gnome/install.sh           # GNOME 桌面（mac 风格）
 bash input-remapper/install.sh  # 鼠标侧键
 bash services/install.sh        # 用户级服务
+bash memory/install.sh          # 内存策略
+bash wifi/install.sh            # WiFi 诊断工具（wifi-diag）
 ```
 
 ## 仓库结构
@@ -85,11 +88,19 @@ linux/
 │   ├── presets/Rapoo Rapoo Gaming Device/mac-workspaces.json
 │   ├── autostart/input-remapper-autoload.desktop
 │   └── README.md
-└── services/
-    ├── install.sh
-    ├── units/                # 4 个用户级服务
-    ├── scripts/              # 服务配套脚本（含 Clash 工具链）
-    └── README.md
+├── services/
+│   ├── install.sh
+│   ├── units/                # 4 个用户级服务
+│   ├── scripts/              # 服务配套脚本（含 Clash 工具链）
+│   └── README.md
+├── memory/
+│   ├── install.sh
+│   ├── probes/               # zram/oomd 探测脚本
+│   └── README.md
+└── wifi/
+    ├── install.sh            # 装 iperf3 + 部署 wifi-diag
+    ├── diag.sh               # 一键链路诊断（信号/重传率/协商/周边 AP）
+    └── README.md             # 优化结论与踩坑记录
 ```
 
 ## 安全说明
@@ -106,6 +117,7 @@ linux/
 ## 硬件参考
 
 - AMD Ryzen 5 5600 + RX 7900 XT + 16G + 1T NVMe
+- WiFi：Intel AX200（2x2 Wi-Fi 6）+ 小米路由器 Xiaomi_F651_5G，5G 信道 157 / 80MHz
 - VA-API 硬件解码支持 AV1/H.264/H.265/VP9
 - tuned desktop profile（平衡响应与省电）
 

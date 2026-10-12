@@ -6,7 +6,9 @@ set -euo pipefail
 GH_PROXY="https://gh-proxy.com"
 
 echo "==> 1/6 安装 dnf 包"
-sudo dnf install -y zsh fzf ripgrep fd-find zoxide eza btop git-delta bat tmux
+# zsh-autosuggestions / zsh-syntax-highlighting 由 zshrc 末尾 source（Fedora 不自动启用）
+sudo dnf install -y zsh fzf ripgrep fd-find zoxide eza btop git-delta bat tmux \
+  zsh-autosuggestions zsh-syntax-highlighting
 
 echo "==> 2/6 安装 starship"
 if ! command -v starship >/dev/null 2>&1 && [ ! -x ~/.local/bin/starship ]; then
