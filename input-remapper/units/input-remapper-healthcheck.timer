@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic input-remapper injection health check
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=60s
+AccuracySec=5s
+Unit=input-remapper-healthcheck.service
+
+[Install]
+WantedBy=timers.target
