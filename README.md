@@ -12,7 +12,7 @@ Fedora 44 (GNOME) 的系统优化与配置备份。重装系统后跑一次 `boo
 | [`ibus-rime/`](ibus-rime/) | 输入法 | IBus + Rime + 雾凇拼音（现代词库）+ 八股文语法模型（长句准确） |
 | [`gaming/`](gaming/) | 游戏优化 | AMD 开源 Mesa 驱动 + Vulkan + gamemode + mangohud + gamescope |
 | [`gnome/`](gnome/) | 桌面（macOS 风格） | 键位交换 Ctrl⇄Win、全屏=独立空间、Dash to Dock、HideTopBar、界面字体 Inter Medium 11.5 + subpixel 抗锯齿、mac 壁纸工具链 |
-| [`input-remapper/`](input-remapper/) | 鼠标侧键 | Rapoo 侧键 → 切换工作区（设备隔离，不影响键盘） |
+| [`input-remapper/`](input-remapper/) | 鼠标侧键 | Rapoo 侧键 → 切换工作区（设备隔离，不影响键盘）+ 注入健康检查 timer（设备软掉线后自动恢复） |
 | [`services/`](services/) | 用户级 systemd 服务 | llama-server、steam-llama-guard、ptyxis-theme-sync、clash-profile-reload |
 | [`memory/`](memory/) | 内存策略（16GB 机器） | zram min(ram/2,8G)/zstd、oomd swap 兜底、Firefox/测试 cgroup 硬上限、桌面 OOM 不连坐 |
 | [`wifi/`](wifi/) | WiFi 链路优化与诊断 | 信道选择记录（157）、AX200 参数基线、一键诊断脚本 `wifi-diag`、大文件内网传输建议 |
@@ -85,7 +85,9 @@ linux/
 ├── input-remapper/
 │   ├── install.sh
 │   ├── config.json
-│   ├── presets/Rapoo Rapoo Gaming Device/mac-workspaces.json
+│   ├── healthcheck.sh        # 注入健康检查（软掉线自愈）
+│   ├── presets/Rapoo Rapoo Gaming Device/WorkspaceSwitch.json
+│   ├── units/                # input-remapper-healthcheck.{service,timer}
 │   ├── autostart/input-remapper-autoload.desktop
 │   └── README.md
 ├── services/

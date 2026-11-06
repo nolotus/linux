@@ -1,0 +1,6 @@
+[Unit]
+Description=input-remapper injection health check (re-autoload after soft disconnect)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/input-remapper-healthcheck
